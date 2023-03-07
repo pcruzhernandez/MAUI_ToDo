@@ -10,6 +10,21 @@ namespace TodoREST.Views
         TodoItem _todoItem;
         bool _isNewItem;
 
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            collectionView.ItemsSource = await _todoService.GetTasksTicketsAsync();
+        }
+
+        async void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var navigationParameter = new Dictionary<string, object>
+            {
+                { nameof(TodoItem), e.CurrentSelection.FirstOrDefault() as TodoItem }
+            };
+            await Shell.Current.GoToAsync(nameof(TodoItemPage), navigationParameter);
+        }
+
         public TodoItem TodoItem
         {
             get => _todoItem;

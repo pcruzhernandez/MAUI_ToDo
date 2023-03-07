@@ -4,56 +4,240 @@
              x:Class="TodoREST.Views.TodoListPage"
              Shell.PresentationMode="Animated"
              Background="black">
-    <!--<ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add Item" Clicked="OnAddItemClicked">
-            <ToolbarItem.IconImageSource>
-                <OnPlatform x:TypeArguments="ImageSource">
-                    <On Platform="Android, WinUI" Value="plus.png" />
-                </OnPlatform>
-            </ToolbarItem.IconImageSource>
-        </ToolbarItem>
-    </ContentPage.ToolbarItems>-->
-    <CollectionView x:Name="collectionView"
-                    Margin="20"
-                    SelectionMode="Single"
-                    SelectionChanged="OnSelectionChanged">
-        <CollectionView.ItemTemplate>
-            <DataTemplate>
-                <VerticalStackLayout>
-                    <Border Stroke="black" StrokeThickness="2" StrokeShape="RoundRectangle 10,10,10,10"  >
-                        <Grid >
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="70"/>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="30"/>
-                            </Grid.RowDefinitions>
-                            <Image Source="/Resources/Images/banner.jpg" Aspect="Fill"/>
-                            <BoxView Grid.Row="1" BackgroundColor="#282828" Margin="0,0,0,0"></BoxView>
-                            <Label Grid.Row="1" Margin="10,0,0,0" Text="SABADO 18 OCT 2023 | 17:00 - 22:00" FontSize="Small" FontFamily="Montse" TextColor="White"/>
-                            <BoxView Grid.Row="2" BackgroundColor="#282828" Margin="0,0,0,0"></BoxView>
-                            <Label Grid.Row="2" Margin="10,0,0,0" Text="{Binding PName}" FontSize="Large" FontAttributes="Bold" FontFamily="Montse" TextColor="White" />
-                            <BoxView Grid.Row="3" BackgroundColor="#282828" Margin="0,0,0,0"></BoxView>
-                            <Label Grid.Row="3" Margin="10,0,0,0" Text="Teatro Barcelo" FontSize="Small" FontFamily="Montse" TextColor="White"/>
-                            <BoxView Grid.Row="4" BackgroundColor="Gray" Margin="0,0,0,0"></BoxView>
-                            <Label Grid.Row="4" Margin="10,0,0,0" Text="+19" FontSize="Small" FontFamily="Montse" TextColor="White"/>
-                            <Label Grid.Row="4" Margin="45,0,0,0" Text="Casual" FontSize="Small" FontFamily="Montse" TextColor="White"/>
-                            <BoxView Grid.Row="5" BackgroundColor="Orange"></BoxView>
+    <Grid HorizontalOptions="FillAndExpand"
+              VerticalOptions="FillAndExpand">
+        <Grid.Margin>
+            <OnPlatform x:TypeArguments="Thickness">
+                <On Platform="iOS,MacCatalyst" Value="15,-35,15,0" />
+                <On Platform="Android" Value="15,0,15,0" />
+            </OnPlatform>
+        </Grid.Margin>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <!---Title/Header-->
+        <Grid Grid.Row="0"
+                  ColumnDefinitions="30,*,*">
+            <!--<Border Grid.Column="0"
+                        HorizontalOptions="Start"
+                        Style="{StaticResource EllipseBorderStyle}">
+                    <Image Source="humberger_menu.png"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+                </Border>-->
+            <Image Grid.Column="0"
+                       Style="{StaticResource ImgBrandStyle}"/>
+            <Label Grid.Column="1" Text="Last Day" Margin="10,0,0,0"
+                               Style="{StaticResource MenuLabelStyle}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+            <!--<Border Grid.Column="2"
+                        HorizontalOptions="End"
+                        Style="{StaticResource EllipseBorderStyle}"
+                        Padding="12">
+                    <Image Source="shop_bag.png"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+                </Border>-->
+        </Grid>
+        <ScrollView Grid.Row="1"
+                        Orientation="Vertical"
+                        VerticalOptions="Fill"
+                        BackgroundColor="Transparent"
+                        VerticalScrollBarVisibility="Never"
+                        HorizontalScrollBarVisibility="Never">
+            <Grid RowDefinitions="Auto,Auto"
+                      VerticalOptions="FillAndExpand"
+                      Padding="0,0,0,0">
+                <!---Slogan and Search & Filter Section-->
+                <VerticalStackLayout Grid.Row="0"
+                                         Margin="0,10,0,0">
+                    <Label Text="Live the party like the Last Day" FontSize="24" Style="{StaticResource LargeMessageLabelStyle}">
+                    </Label>
 
-                            <Label Grid.Row="5" Margin="5,0,0,0" Text="Ver más" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="White" />
-                            <!--<Button Grid.Row="5" Text="Ver mas" Clicked="Button_Clicked"></Button>-->
-
-                        </Grid>
-                        <Border.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding BindingContext.DetailCommand, Source={x:Reference HomeView}}" CommandParameter="{Binding .}"/>
-                        </Border.GestureRecognizers>
-                    </Border>
-
+                    <Grid>
+                        <Border Style="{StaticResource SearchBorderStyle}">
+                            <Grid ColumnDefinitions="Auto,*"
+                                      ColumnSpacing="20">
+                                <Image Grid.Column="0" 
+                                           Source="search.png"/>
+                                <Entry Grid.Column="1" 
+                                           Style="{StaticResource SearchEntryStyle}"/>
+                            </Grid>
+                        </Border>
+                        <Border Style="{StaticResource FilterBorderStyle}">
+                            <Image Source="filter.png"/>
+                        </Border>
+                    </Grid>
                 </VerticalStackLayout>
+                <!---Products Section-->
+                <StackLayout Grid.Row="1"
+                                 Margin="0,20,0,0">
+                    <!---Category Chips-->
+                    <ScrollView Orientation="Horizontal"
+                                    VerticalOptions="Start"
+                                    VerticalScrollBarVisibility="Never"
+                                    HorizontalScrollBarVisibility="Never"
+                                    BackgroundColor="Transparent">
+                        <HorizontalStackLayout Spacing="10"
+                                       RadioButtonGroup.GroupName="CoffeCategories"
+                                       RadioButtonGroup.SelectedValue="{Binding CategorySelectedValue}"
+                                       BindableLayout.ItemsSource="{StaticResource CategoriesArray}">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <RadioButton x:Name="RadioCategory" Content="{Binding .}" Value="{Binding .}">
+                                        <RadioButton.ControlTemplate>
+                                            <ControlTemplate>
+                                                <Grid HorizontalOptions="FillAndExpand">
+                                                    <VisualStateManager.VisualStateGroups>
+                                                        <VisualStateGroupList>
+                                                            <VisualStateGroup x:Name="CheckedStates">
+                                                                <VisualState x:Name="Checked">
+                                                                    <VisualState.Setters>
+                                                                        <Setter
+                                                                    TargetName="CategoryLabel"
+                                                                    Property="Label.TextColor"
+                                                                    Value="{StaticResource White}"/>
+                                                                        <Setter
+                                                                    TargetName="ChipBorderView"
+                                                                    Property="Border.Background"
+                                                                    Value="{StaticResource PrimaryBrush}"/>
+                                                                    </VisualState.Setters>
+                                                                </VisualState>
+                                                                <VisualState x:Name="Unchecked">
+                                                                    <VisualState.Setters>
+                                                                        <Setter
+                                                                    TargetName="CategoryLabel"
+                                                                    Property="Label.TextColor"
+                                                                    Value="{StaticResource Gray400}"/>
+                                                                        <Setter
+                                                                    TargetName="ChipBorderView"
+                                                                    Property="Border.Background"
+                                                                    Value="{StaticResource Gray100Brush}"/>
+                                                                    </VisualState.Setters>
+                                                                </VisualState>
+                                                            </VisualStateGroup>
+                                                        </VisualStateGroupList>
+                                                    </VisualStateManager.VisualStateGroups>
+                                                    <Border StrokeThickness="0"
+                                                        x:Name="ChipBorderView"
+                                                        HeightRequest="35"
+                                                        WidthRequest="90">
+                                                        <Border.StrokeShape>
+                                                            <RoundRectangle CornerRadius="25"/>
+                                                        </Border.StrokeShape>
+                                                        <Label Text="{TemplateBinding Content}" 
+                                                           x:Name="CategoryLabel"
+                                                           HorizontalTextAlignment="Center"
+                                                           VerticalTextAlignment="Center"
+                                                           FontFamily="RalewayRegular"
+                                                           FontSize="16"/>
+                                                    </Border>
+                                                </Grid>
+                                            </ControlTemplate>
+                                        </RadioButton.ControlTemplate>
+                                    </RadioButton>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </HorizontalStackLayout>
+                    </ScrollView>
+                    <!---Product List Header-->
+                    <StackLayout Orientation="Horizontal" 
+                                     HorizontalOptions="FillAndExpand"
+                                     VerticalOptions="Start"
+                                     Margin="0,20,0,0">
+                        <Label Text="Proximo Eventos"
+                                   HorizontalOptions="StartAndExpand"
+                                   FontFamily="RalewayMedium"
+                                   FontSize="22"
+                                   TextColor="White"/>
+                        <!--<Label Text="Ver todos"
+                                   HorizontalOptions="End"
+                                   FontFamily="RalewayMedium"
+                                   FontSize="22"
+                                   TextColor="{StaticResource Primary}"/>-->
+                    </StackLayout>
+                    <CollectionView x:Name="collectionView"          
+                        SelectionMode="Single"
+                        SelectionChanged="OnSelectionChanged">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <VerticalStackLayout>
+                                    <Border Stroke="black" StrokeThickness="2" StrokeShape="RoundRectangle 10,10,10,10"  >
 
-            </DataTemplate>
-        </CollectionView.ItemTemplate>
-    </CollectionView>
+                                        <Grid >
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="50"></ColumnDefinition>
+                                                <ColumnDefinition Width="60"></ColumnDefinition>
+                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="70"/>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="30"/>
+                                            </Grid.RowDefinitions>
+
+                                            <Image Grid.Row="0" Grid.ColumnSpan="3" Source="/Resources/Images/banner.jpg" Aspect="Fill"/>
+                                            
+                                            <Label Grid.Row="1" Grid.ColumnSpan="3" BackgroundColor="#282828" Padding="10,0,0,0" Text="{Binding PDateTimeLarge}" FontSize="Small" FontFamily="Montse" TextColor="White"/>
+
+                                            <Label Grid.Row="2" Grid.ColumnSpan="3" BackgroundColor="#282828" Padding="10,0,0,0" Text="{Binding PName}" FontSize="Large" FontFamily="Montse" FontAttributes="Bold" TextColor="White" />
+
+                                            <Label Grid.Row="3" Grid.ColumnSpan="3" BackgroundColor="#282828" Padding="10,0,0,0" Text="{Binding PEventLocation}" FontSize="Small" FontFamily="Montse" TextColor="CornflowerBlue"/>
+                                            <BoxView Grid.Row="4" Grid.ColumnSpan="3" BackgroundColor="#282828" Margin="0,0,0,0" ></BoxView>
+                                            <Border Grid.Row="4"  Grid.Column="0"  StrokeShape="RoundRectangle 10,10,10,10">
+                                                <Label Grid.Row="4" Grid.Column="0"  Margin="0,0,0,0" Text="+19" FontSize="Small" FontFamily="Montse" HorizontalTextAlignment="Center" TextColor="White" BackgroundColor="Gray"/>
+                                            </Border>
+                                            <Border Grid.Row="4" Grid.Column="1" BackgroundColor="#282828" StrokeShape="RoundRectangle 10,10,10,10">
+                                                <Label Grid.Row="4" Grid.Column="1" Margin="0,0,0,0" Text="Casual" FontSize="Small" FontFamily="Montse" TextColor="White" HorizontalTextAlignment="Center" BackgroundColor="Gray"/>
+                                            </Border>
+
+                                            <Label Grid.Row="5" Grid.ColumnSpan="3" BackgroundColor="DarkOrange" Margin="0,0,0,0" Text="Ver más" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="White" />
+
+                                        </Grid>
+                                    </Border>
+                                    <!--<Border Stroke="black" StrokeThickness="2" StrokeShape="RoundRectangle 10,10,10,10"  >
+                            <Grid >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="70"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="30"/>
+                                </Grid.RowDefinitions>
+                                <Image Source="/Resources/Images/banner.jpg" Aspect="Fill"/>
+                                <BoxView Grid.Row="1" BackgroundColor="#282828" Margin="0,0,0,0"></BoxView>
+                                <Label Grid.Row="1" Margin="10,0,0,0" Text="SABADO 18 OCT 2023 | 17:00 - 22:00" FontSize="Small" FontFamily="Montse" TextColor="White"/>
+                                <BoxView Grid.Row="2" BackgroundColor="#282828" Margin="0,0,0,0"></BoxView>
+                                <Label Grid.Row="2" Margin="10,0,0,0" Text="{Binding PName}" FontSize="Large" FontAttributes="Bold" FontFamily="Montse" TextColor="White" />
+                                <BoxView Grid.Row="3" BackgroundColor="#282828" Margin="0,0,0,0"></BoxView>
+                                <Label Grid.Row="3" Margin="10,0,0,0" Text="Teatro Barcelo" FontSize="Small" FontFamily="Montse" TextColor="White"/>
+                                <BoxView Grid.Row="4" BackgroundColor="Gray" Margin="0,0,0,0"></BoxView>
+                                <Label Grid.Row="4" Margin="10,0,0,0" Text="+19" FontSize="Small" FontFamily="Montse" TextColor="White"/>
+                                <Label Grid.Row="4" Margin="45,0,0,0" Text="Casual" FontSize="Small" FontFamily="Montse" TextColor="White"/>
+                                <BoxView Grid.Row="5" BackgroundColor="Orange"></BoxView>
+
+                                <Label Grid.Row="5" Margin="5,0,0,0" Text="Ver más" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="White" BackgroundColor="Orange" />
+                                -->
+                                    <!--<Button Grid.Row="5" Text="Ver mas" Clicked="Button_Clicked"></Button>-->
+                                    <!--
+
+                            </Grid>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding BindingContext.DetailCommand, Source={x:Reference HomeView}}" CommandParameter="{Binding .}"/>
+                            </Border.GestureRecognizers>
+                        </Border>-->
+
+                                </VerticalStackLayout>
+
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </Grid>
+        </ScrollView>
+    </Grid>
 </ContentPage>

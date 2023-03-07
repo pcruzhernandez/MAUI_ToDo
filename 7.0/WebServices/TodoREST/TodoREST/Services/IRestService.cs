@@ -6,6 +6,7 @@ namespace TodoREST.Services
     {
         Task<List<TodoItem>> RefreshDataAsync();
 
+        Task<List<TodoTickets>> RefreshDataTicketsAsync();
         Task SaveTodoItemAsync(TodoItem item, bool isNewItem);
 
         Task DeleteTodoItemAsync(string id);

@@ -14,6 +14,8 @@ namespace TodoREST.Services
 
         public List<TodoItem> Items { get; private set; }
 
+        public List<TodoTickets> Tickets { get; private set; }
+
         public RestService(IHttpsClientHandlerService service)
         {
 #if DEBUG
@@ -55,6 +57,27 @@ namespace TodoREST.Services
             return Items;
         }
 
+        public async Task<List<TodoTickets>> RefreshDataTicketsAsync()
+        {
+            Tickets = new List<TodoTickets>();
+
+            Uri uri = new Uri(string.Format("https://nightlast.es/wsevents.asmx/GetAllEventsTicketsJSON?PID=12", string.Empty));
+            try
+            {
+                HttpResponseMessage response = await _client.GetAsync(uri);
+                if (response.IsSuccessStatusCode)
+                {
+                    string content = await response.Content.ReadAsStringAsync();
+                    Tickets = JsonSerializer.Deserialize<List<TodoTickets>>(content, _serializerOptions);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(@"\tERROR {0}", ex.Message);
+            }
+
+            return Tickets;
+        }
         public async Task SaveTodoItemAsync(TodoItem item, bool isNewItem = false)
         {
             Uri uri = new Uri(string.Format(Constants.RestUrl, string.Empty));

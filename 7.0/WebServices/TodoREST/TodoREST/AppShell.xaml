@@ -3,14 +3,15 @@
     x:Class="TodoREST.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:views="clr-namespace:TodoREST.Views">
+    xmlns:views="clr-namespace:TodoREST.Views"
+        Shell.FlyoutBehavior="Disabled">
 
     <!--<ShellContent
         Title="Home"
         ContentTemplate="{DataTemplate views:TodoListPage}"
         Route="MainPage" />-->
 
-    <TabBar Route="starbucks">
+    <TabBar>
         <Tab Icon="home.png" Route="home">
             <ShellContent ContentTemplate="{DataTemplate views:TodoListPage}" />
         </Tab>

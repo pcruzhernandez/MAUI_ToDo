@@ -356,7 +356,7 @@
     </Style>
 
     <Style TargetType="Shell" ApplyToDerivedTypes="True">
-        <Setter Property="Shell.BackgroundColor" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource Gray950}}" />
+        <Setter Property="Shell.BackgroundColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray950}}" />
         <Setter Property="Shell.ForegroundColor" Value="{OnPlatform WinUI={StaticResource Primary}, Default={StaticResource White}}" />
         <Setter Property="Shell.TitleColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource White}}" />
         <Setter Property="Shell.DisabledColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray950}}" />
@@ -380,5 +380,46 @@
         <Setter Property="UnselectedTabColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray950}}" />
         <Setter Property="SelectedTabColor" Value="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource Gray200}}" />
     </Style>
-
+    <Style TargetType="Image" x:Key="ImgBrandStyle">
+        <Setter Property="HeightRequest" Value="55"/>
+        <Setter Property="WidthRequest" Value="55"/>
+        <Setter Property="HorizontalOptions" Value="Center"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="Aspect" Value="AspectFit"/>
+        <Setter Property="Source" Value="logo.png"/>
+    </Style>
+    <Style TargetType="Entry" x:Key="SearchEntryStyle">
+        <Setter Property="FontFamily" Value="RalewayRegular"/>
+        <Setter Property="Placeholder" Value="Búsqueda"/>
+        <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="TextColor" Value="{StaticResource Primary}"/>
+    </Style>
+    <Style TargetType="Label" x:Key="MenuLabelStyle">
+        <Setter Property="FontFamily" Value="montse"/>
+        <Setter Property="FontSize" Value="35"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="HorizontalOptions" Value="Start"/>
+        <Setter Property="HorizontalTextAlignment" Value="Start"/>
+        <Setter Property="TextColor" Value="{StaticResource White}"/>
+    </Style>
+    <Style TargetType="Label" x:Key="LargeMessageLabelStyle">
+        <Setter Property="FontFamily" Value="RalewayRegular"/>
+        <Setter Property="FontSize" Value="32"/>
+        <Setter Property="HorizontalOptions" Value="Start"/>
+        <Setter Property="HorizontalTextAlignment" Value="Start"/>
+        <Setter Property="TextColor" Value="{StaticResource Primary}"/>
+    </Style>
+    <x:Array Type="{x:Type x:String}" x:Key="CategoriesArray">
+        <x:String>LastDay</x:String>
+        <x:String>LastNight</x:String>
+        <x:String>+14</x:String>
+        <x:String>+16</x:String>
+        <x:String>Valencia</x:String>
+    </x:Array>
+    <x:Array Type="{x:Type x:String}" x:Key="SizeArray">
+        <x:String>1ST RELEASE</x:String>
+        <x:String>2ND RELEASE</x:String>
+        <x:String>VIP</x:String>
+    </x:Array>
 </ResourceDictionary>

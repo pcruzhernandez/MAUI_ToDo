@@ -12,7 +12,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 
 		<!-- Display name -->
-		<ApplicationTitle>TodoREST</ApplicationTitle>
+		<ApplicationTitle>LastDay</ApplicationTitle>
 
 		<!-- App Identifier -->
 		<ApplicationId>com.companyname.todorest</ApplicationId>
@@ -32,10 +32,8 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
@@ -51,9 +49,12 @@
 	  <None Remove="Resources\Images\banner.jpg" />
 	  <None Remove="Resources\Images\check.png" />
 	  <None Remove="Resources\Images\fav.png" />
+	  <None Remove="Resources\Images\flyer.jpeg" />
 	  <None Remove="Resources\Images\home.png" />
+	  <None Remove="Resources\Images\logo.png" />
 	  <None Remove="Resources\Images\notification.png" />
 	  <None Remove="Resources\Images\plus.png" />
+	  <None Remove="Resources\Images\search.png" />
 	  <None Remove="Resources\Images\wallet.png" />
 	</ItemGroup>
 

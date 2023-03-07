@@ -11,6 +11,6 @@
         public static string Scheme = "https"; // or http
         public static string Port = "5001";
         //public static string RestUrl = $"{Scheme}://{LocalhostUrl}:{Port}/api/todoitems/{{0}}";
-        public static string RestUrl = "https://nightlast.es/wsevents.asmx/GetAllEventsJSON2"; 
+        public static string RestUrl = "https://nightlast.es/wsevents.asmx/GetAllEventsJSON"; 
     }
 }
