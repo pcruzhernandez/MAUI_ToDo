@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using TodoREST.Models;
 
 namespace TodoREST.Services
@@ -19,18 +20,18 @@ namespace TodoREST.Services
             _httpsClientHandlerService = service;
             HttpMessageHandler handler = _httpsClientHandlerService.GetPlatformMessageHandler();
             if (handler != null)
-                _client = new HttpClient(handler);
+                _client = new HttpClient();
             else
                 _client = new HttpClient();
 #else
             _client = new HttpClient();
 #endif
-            _serializerOptions = new JsonSerializerOptions
-            {
-                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-                WriteIndented = true
-            };
-        }
+            //_serializerOptions = new JsonSerializerOptions
+            //{
+            //    PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+            //    WriteIndented = true
+            //};
+         }
 
         public async Task<List<TodoItem>> RefreshDataAsync()
         {

@@ -2,9 +2,9 @@
 {
     public class TodoItem
     {
-        public string ID { get; set; }
-        public string Name { get; set; }
-        public string Notes { get; set; }
-        public bool Done { get; set; }
+        public string PID { get; set; }
+        public string PName { get; set; }
+        //public string Notes { get; set; }
+        //public bool Done { get; set; }
     }
 }

@@ -23,7 +23,7 @@ namespace TodoREST.Views
         {
             var navigationParameter = new Dictionary<string, object>
             {
-                { nameof(TodoItem), new TodoItem { ID = Guid.NewGuid().ToString() } }
+                { nameof(TodoItem), new TodoItem { PID = Guid.NewGuid().ToString() } }
             };
             await Shell.Current.GoToAsync(nameof(TodoItemPage), navigationParameter);
         }

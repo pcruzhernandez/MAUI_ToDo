@@ -30,7 +30,7 @@ namespace TodoREST.Views
 
         bool IsNewItem(TodoItem todoItem)
         {
-            if (string.IsNullOrWhiteSpace(todoItem.Name) && string.IsNullOrWhiteSpace(todoItem.Notes))
+            if (string.IsNullOrWhiteSpace(todoItem.PName) && string.IsNullOrWhiteSpace(todoItem.PID))
                 return true;
             return false;
         }
