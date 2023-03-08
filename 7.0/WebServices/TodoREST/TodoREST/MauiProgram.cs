@@ -24,6 +24,7 @@ public static class MauiProgram
 		builder.Services.AddSingleton<TodoListPage>();
 		builder.Services.AddTransient<TodoItemPage>();
         builder.Services.AddTransient<SelectQtyPage>();
+        builder.Services.AddTransient<AsistentesPage>();
 
         return builder.Build();
 	}

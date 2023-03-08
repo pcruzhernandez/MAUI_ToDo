@@ -10,5 +10,6 @@ public partial class AppShell : Shell
 
 		Routing.RegisterRoute(nameof(TodoItemPage), typeof(TodoItemPage));
         Routing.RegisterRoute(nameof(SelectQtyPage), typeof(SelectQtyPage));
+        Routing.RegisterRoute(nameof(AsistentesPage), typeof(AsistentesPage));
     }
 }
