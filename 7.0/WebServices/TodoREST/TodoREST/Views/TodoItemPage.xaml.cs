@@ -8,21 +8,23 @@ namespace TodoREST.Views
     {
         ITodoService _todoService;
         TodoItem _todoItem;
+        TodoTickets _todoTickets;
         bool _isNewItem;
+        bool _isNewTicket;
 
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            collectionView.ItemsSource = await _todoService.GetTasksTicketsAsync();
+            collectionView.ItemsSource = await _todoService.GetTasksTicketsAsync(TodoItem);
         }
 
         async void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var navigationParameter = new Dictionary<string, object>
             {
-                { nameof(TodoItem), e.CurrentSelection.FirstOrDefault() as TodoItem }
+                { nameof(TodoTickets), e.CurrentSelection.FirstOrDefault() as TodoTickets }
             };
-            await Shell.Current.GoToAsync(nameof(TodoItemPage), navigationParameter);
+            await Shell.Current.GoToAsync(nameof(SelectQtyPage), navigationParameter);
         }
 
         public TodoItem TodoItem
@@ -36,6 +38,17 @@ namespace TodoREST.Views
             }
         }
 
+        public TodoTickets TodoTickets
+        {
+            get => _todoTickets;
+            set
+            {
+                _isNewTicket = IsNewTicket(value);
+                _todoTickets = value;
+                OnPropertyChanged();
+            }
+        }
+
         public TodoItemPage(ITodoService service)
         {
             InitializeComponent();
@@ -43,9 +56,17 @@ namespace TodoREST.Views
             BindingContext = this;
         }
 
+
         bool IsNewItem(TodoItem todoItem)
         {
             if (string.IsNullOrWhiteSpace(todoItem.PName) && string.IsNullOrWhiteSpace(todoItem.PID))
+                return true;
+            return false;
+        }
+
+        bool IsNewTicket(TodoTickets todoTickets)
+        {
+            if (string.IsNullOrWhiteSpace(todoTickets.PName) && string.IsNullOrWhiteSpace(todoTickets.PID))
                 return true;
             return false;
         }

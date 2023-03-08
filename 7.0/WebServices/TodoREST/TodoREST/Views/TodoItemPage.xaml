@@ -65,7 +65,8 @@
 
 
                 <CollectionView x:Name="collectionView"          
-                        SelectionMode="Single">
+                        SelectionMode="Single"
+                        SelectionChanged="OnSelectionChanged">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <VerticalStackLayout>
@@ -84,7 +85,7 @@
 
                                         <Label Grid.Row="0" Grid.ColumnSpan="1" BackgroundColor="#282828" Padding="10,0,0,0" Text="{Binding PName}" FontSize="Small" FontFamily="Montse" TextColor="White"/>
 
-                                        <Label Grid.Row="1"  Grid.Column="0" VerticalTextAlignment="End" BackgroundColor="#282828" Padding="10,0,0,0" Text="{Binding PDescription}" FontSize="Small" FontFamily="Montse" TextColor="White"/>
+                                        <Label Grid.Row="1"  Grid.Column="0" VerticalTextAlignment="Start" BackgroundColor="#282828" Padding="10,0,0,0" Text="{Binding PDescription}" FontSize="Small" FontFamily="Montse" TextColor="White"/>
 
                                         <Label Grid.RowSpan="2" Grid.Column="1" BackgroundColor="#282828" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Padding="0,0,0,0" Text="{Binding PPrice}" FontSize="Large" FontFamily="Montse" FontAttributes="Bold" TextColor="White" />
 

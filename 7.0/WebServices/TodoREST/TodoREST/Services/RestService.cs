@@ -57,11 +57,11 @@ namespace TodoREST.Services
             return Items;
         }
 
-        public async Task<List<TodoTickets>> RefreshDataTicketsAsync()
+        public async Task<List<TodoTickets>> RefreshDataTicketsAsync(string PID)
         {
             Tickets = new List<TodoTickets>();
 
-            Uri uri = new Uri(string.Format("https://nightlast.es/wsevents.asmx/GetAllEventsTicketsJSON?PID=12", string.Empty));
+            Uri uri = new Uri(string.Format("https://nightlast.es/wsevents.asmx/GetAllEventsTicketsJSON?PID="+PID.ToString(), string.Empty));
             try
             {
                 HttpResponseMessage response = await _client.GetAsync(uri);

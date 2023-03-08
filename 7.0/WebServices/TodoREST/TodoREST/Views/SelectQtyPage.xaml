@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TodoREST.Views.SelectQtyPage"
+             Title="Last Day"
+             BackgroundColor="Black">
+    <ContentPage.Resources>
+        <Style TargetType="Label">
+            <Setter Property="Margin"
+                    Value="0,10,0,10" />
+            <Setter Property="FontAttributes"
+                    Value="Bold" />
+            <Setter Property="FontSize"
+                    Value="20" />
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Margin"
+                    Value="0,5,0,5" />
+        </Style>
+    </ContentPage.Resources>
+    <VerticalStackLayout Margin="20">
+        <Label Text="SABADO 18 OCT 2022 | 17:00-20:00" FontFamily="Montse" Grid.Column="1" Grid.Row="1" TextColor="White" FontSize="Small" />
+        <Label Text="Fiesta Organigrama" FontFamily="Montse" Grid.Column="1" Grid.Row="2" TextColor="White" />
+
+
+
+        <!--<Label Text="Name" />
+		<Entry Text="{Binding Path=TodoItem.PName}" 
+               Placeholder="Enter item" />
+		<Label Text="Notes" />
+		-->
+        <!--<Entry Text="{Binding Path=TodoItem.Notes}"
+               Placeholder="Enter notes" />
+		<Label Text="Done" />
+		<Switch IsToggled="{Binding Path=TodoItem.Done}" />-->
+        <!--
+		<Button Text="Save" 
+                Clicked="OnSaveButtonClicked" />
+		<Button Text="Delete"
+                Clicked="OnDeleteButtonClicked" />
+		<Button Text="Cancel" 
+                Clicked="OnCancelButtonClicked" />-->
+        <ScrollView Grid.Row="1"
+                        Orientation="Vertical"
+                        VerticalOptions="Fill"
+                        BackgroundColor="Transparent"
+                        VerticalScrollBarVisibility="Never"
+                        HorizontalScrollBarVisibility="Never">
+            <Grid RowDefinitions="Auto,Auto"
+                      VerticalOptions="FillAndExpand"
+                      Padding="0,0,0,0">
+
+
+
+                            <VerticalStackLayout>
+                                <Border Stroke="black" StrokeThickness="2" StrokeShape="RoundRectangle 10,10,10,10"  >
+
+                                    <Grid BackgroundColor="#282828">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                            <ColumnDefinition Width="70"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="40"/>
+                                            <RowDefinition Height="auto"/>
+
+                                        </Grid.RowDefinitions>
+
+                                        <Label Grid.Row="0" Grid.ColumnSpan="1" BackgroundColor="#282828" Padding="10,0,0,0" Text="{Binding PName}" FontSize="Small" FontFamily="Montse" TextColor="White"/>
+
+                                        <Label Grid.Row="1"  Grid.Column="0" VerticalTextAlignment="Start" BackgroundColor="#282828" Padding="10,0,0,0" Text="{Binding PDescription}" FontSize="Small" FontFamily="Montse" TextColor="White"/>
+
+                                        <Label Grid.RowSpan="2" Grid.Column="1" BackgroundColor="#282828" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Padding="0,0,0,0" Text="{Binding PPrice}" FontSize="Large" FontFamily="Montse" FontAttributes="Bold" TextColor="White" />
+
+
+
+                                    </Grid>
+                                </Border>
+
+                    <Border Stroke="black" StrokeThickness="2" StrokeShape="RoundRectangle 10,10,10,10"  >
+
+                        <Grid BackgroundColor="#282828">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="70"></ColumnDefinition>
+                                <ColumnDefinition Width="70"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40"/>
+                                <RowDefinition Height="auto"/>
+
+                            </Grid.RowDefinitions>
+
+                            <Label Grid.Row="0" Grid.ColumnSpan="3" HorizontalTextAlignment="Center" BackgroundColor="#282828" Padding="10,0,0,0" Text="Selecciona cantidad" FontSize="Small" FontFamily="Montse" TextColor="White"/>
+
+                            <Label Grid.Row="1"  Grid.Column="0" VerticalTextAlignment="Start" BackgroundColor="#282828" Padding="10,0,0,0" Text="{Binding PDescription}" FontSize="Small" FontFamily="Montse" TextColor="White"/>
+
+                            
+
+
+                        </Grid>
+                    </Border>
+                    <!--<Border Stroke="black" StrokeThickness="2" StrokeShape="RoundRectangle 10,10,10,10"  >
+                            <Grid >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="70"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="30"/>
+                                </Grid.RowDefinitions>
+                                <Image Source="/Resources/Images/banner.jpg" Aspect="Fill"/>
+                                <BoxView Grid.Row="1" BackgroundColor="#282828" Margin="0,0,0,0"></BoxView>
+                                <Label Grid.Row="1" Margin="10,0,0,0" Text="SABADO 18 OCT 2023 | 17:00 - 22:00" FontSize="Small" FontFamily="Montse" TextColor="White"/>
+                                <BoxView Grid.Row="2" BackgroundColor="#282828" Margin="0,0,0,0"></BoxView>
+                                <Label Grid.Row="2" Margin="10,0,0,0" Text="{Binding PName}" FontSize="Large" FontAttributes="Bold" FontFamily="Montse" TextColor="White" />
+                                <BoxView Grid.Row="3" BackgroundColor="#282828" Margin="0,0,0,0"></BoxView>
+                                <Label Grid.Row="3" Margin="10,0,0,0" Text="Teatro Barcelo" FontSize="Small" FontFamily="Montse" TextColor="White"/>
+                                <BoxView Grid.Row="4" BackgroundColor="Gray" Margin="0,0,0,0"></BoxView>
+                                <Label Grid.Row="4" Margin="10,0,0,0" Text="+19" FontSize="Small" FontFamily="Montse" TextColor="White"/>
+                                <Label Grid.Row="4" Margin="45,0,0,0" Text="Casual" FontSize="Small" FontFamily="Montse" TextColor="White"/>
+                                <BoxView Grid.Row="5" BackgroundColor="Orange"></BoxView>
+
+                                <Label Grid.Row="5" Margin="5,0,0,0" Text="Ver más" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="White" BackgroundColor="Orange" />
+                                -->
+                                <!--<Button Grid.Row="5" Text="Ver mas" Clicked="Button_Clicked"></Button>-->
+                                <!--
+
+                            </Grid>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding BindingContext.DetailCommand, Source={x:Reference HomeView}}" CommandParameter="{Binding .}"/>
+                            </Border.GestureRecognizers>
+                        </Border>-->
+
+                            </VerticalStackLayout>
+
+
+            </Grid>
+        </ScrollView>
+    </VerticalStackLayout>
+</ContentPage>

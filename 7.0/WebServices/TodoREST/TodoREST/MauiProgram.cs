@@ -23,7 +23,8 @@ public static class MauiProgram
 
 		builder.Services.AddSingleton<TodoListPage>();
 		builder.Services.AddTransient<TodoItemPage>();
+        builder.Services.AddTransient<SelectQtyPage>();
 
-		return builder.Build();
+        return builder.Build();
 	}
 }

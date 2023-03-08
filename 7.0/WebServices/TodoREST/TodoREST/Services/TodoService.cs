@@ -15,9 +15,9 @@ namespace TodoREST.Services
         {
             return _restService.RefreshDataAsync();
         }
-        public Task<List<TodoTickets>> GetTasksTicketsAsync()
+        public Task<List<TodoTickets>> GetTasksTicketsAsync(TodoItem item)
         {
-            return _restService.RefreshDataTicketsAsync();
+            return _restService.RefreshDataTicketsAsync(item.PID);
         }
 
         public Task SaveTaskAsync(TodoItem item, bool isNewItem = false)
