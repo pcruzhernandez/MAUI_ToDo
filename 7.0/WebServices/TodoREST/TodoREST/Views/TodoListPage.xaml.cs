@@ -17,6 +17,7 @@ namespace TodoREST.Views
         {
             base.OnAppearing();
             collectionView.ItemsSource = await _todoService.GetTasksAsync();
+            
         }
 
         async void OnAddItemClicked(object sender, EventArgs e)

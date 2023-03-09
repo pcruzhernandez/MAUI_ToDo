@@ -22,16 +22,16 @@
     </FlyoutItem>-->
     
     <TabBar>
-        <Tab Icon="home.png" Route="TodoListPage">
+        <Tab Icon="wine.svg" Route="TodoListPage" Title="Eventos">
             <ShellContent ContentTemplate="{DataTemplate views:TodoListPage}" />
         </Tab>
-        <Tab Icon="wallet.png" Route="wallet">
+        <Tab Icon="wallet.png" Route="wallet" Title="Mis entradas">
             <ShellContent ContentTemplate="{DataTemplate views:TodoListPage}" />
         </Tab>
-        <Tab Icon="fav.png" Route="fav">
+        <!--<Tab Icon="fav.png" Route="fav">
             <ShellContent ContentTemplate="{DataTemplate views:TodoListPage}" />
-        </Tab>
-        <Tab Icon="notification.png" Route="LoginPage">
+        </Tab>-->
+        <Tab Icon="notification.png" Route="LoginPage" Title="Usuario">
             <ShellContent ContentTemplate="{DataTemplate views:LoginPage}" />
         </Tab>
     </TabBar>

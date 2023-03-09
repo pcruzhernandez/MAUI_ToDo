@@ -44,13 +44,16 @@
 	<ItemGroup>
 		<None Remove="Platforms\Android\Resources\xml\network_security_config.xml" />
 		<None Remove="Resources\AppIcon\appicon.svg" />
+		<None Remove="Resources\Fonts\materialdesignicons-webfont.ttf" />
 		<None Remove="Resources\Fonts\Montserrat-Regular.ttf" />
 		<None Remove="Resources\Images\add.png" />
 		<None Remove="Resources\Images\banner.jpg" />
 		<None Remove="Resources\Images\check.png" />
+		<None Remove="Resources\Images\coctel.png" />
 		<None Remove="Resources\Images\fav.png" />
 		<None Remove="Resources\Images\filter.png" />
 		<None Remove="Resources\Images\flyer.jpeg" />
+		<None Remove="Resources\Images\flyer2.jpeg" />
 		<None Remove="Resources\Images\home.png" />
 		<None Remove="Resources\Images\logo.png" />
 		<None Remove="Resources\Images\notification.png" />
@@ -58,6 +61,7 @@
 		<None Remove="Resources\Images\search.png" />
 		<None Remove="Resources\Images\substract.png" />
 		<None Remove="Resources\Images\wallet.png" />
+		<None Remove="Resources\Images\wine.svg" />
 		<None Remove="Resources\Splash\lastdayblanco.svg" />
 		<None Remove="Resources\Splash\splashold.svg" />
 	</ItemGroup>
