@@ -21,8 +21,8 @@
     </ContentPage.Resources>
     
     <VerticalStackLayout Margin="20">
-        <Label Text="SABADO 18 OCT 2022 | 17:00-20:00" FontFamily="Montse" Grid.Column="1" Grid.Row="1" TextColor="White" FontSize="Small" />
-        <Label Text="Fiesta Organigrama" FontFamily="Montse" Grid.Column="1" Grid.Row="2" TextColor="White" />
+        <Label Text="{Binding PDateTimeLarge}" FontFamily="Montse" Grid.Column="1" Grid.Row="1" TextColor="White" FontSize="Small" />
+        <Label Text="{Binding PEventName}" FontFamily="Montse" Grid.Column="1" Grid.Row="2" TextColor="White" />
 
 
 

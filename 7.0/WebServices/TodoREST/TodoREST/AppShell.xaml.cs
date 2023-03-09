@@ -8,8 +8,10 @@ public partial class AppShell : Shell
 	{
 		InitializeComponent();
 
-		Routing.RegisterRoute(nameof(TodoItemPage), typeof(TodoItemPage));
+        Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
+        Routing.RegisterRoute(nameof(TodoItemPage), typeof(TodoItemPage));
         Routing.RegisterRoute(nameof(SelectQtyPage), typeof(SelectQtyPage));
         Routing.RegisterRoute(nameof(AsistentesPage), typeof(AsistentesPage));
+        Routing.RegisterRoute(nameof(TodoListPage), typeof(TodoListPage));
     }
 }

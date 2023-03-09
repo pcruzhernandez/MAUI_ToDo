@@ -31,8 +31,8 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" Foreground="Resources\AppIcon\appiconconfg.svg"/>
-		<MauiSplashScreen Include="Resources\Splash\lastdayblanco.svg" Color="Black"  />
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" Foreground="Resources\AppIcon\appiconconfg.svg" />
+		<MauiSplashScreen Include="Resources\Splash\lastdayblanco.svg" Color="Black" />
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
 		<MauiFont Include="Resources\Fonts\*" />
@@ -62,12 +62,21 @@
 		<None Remove="Resources\Splash\splashold.svg" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0" />
+	  <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.1.2" />
+	  <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+	</ItemGroup>
+
 	
 
 
 
 	<ItemGroup>
 	  <MauiXaml Update="Views\AsistentesPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\LoginPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\SelectQtyPage.xaml">

@@ -10,9 +10,19 @@
         Title="Home"
         ContentTemplate="{DataTemplate views:TodoListPage}"
         Route="MainPage" />-->
+    <!--<FlyoutItem>
+        
+        <ShellContent Route="TodoListPage"
+                      FlyoutItemIsVisible="True"
+                      ContentTemplate="{DataTemplate views:TodoListPage}"/>
 
+        <ShellContent Route="LoginPage"
+                      FlyoutItemIsVisible="True"
+                      ContentTemplate="{DataTemplate views:LoginPage}"/>
+    </FlyoutItem>-->
+    
     <TabBar>
-        <Tab Icon="home.png" Route="home">
+        <Tab Icon="home.png" Route="TodoListPage">
             <ShellContent ContentTemplate="{DataTemplate views:TodoListPage}" />
         </Tab>
         <Tab Icon="wallet.png" Route="wallet">
@@ -21,8 +31,8 @@
         <Tab Icon="fav.png" Route="fav">
             <ShellContent ContentTemplate="{DataTemplate views:TodoListPage}" />
         </Tab>
-        <Tab Icon="notification.png" Route="notification">
-            <ShellContent ContentTemplate="{DataTemplate views:TodoListPage}" />
+        <Tab Icon="notification.png" Route="LoginPage">
+            <ShellContent ContentTemplate="{DataTemplate views:LoginPage}" />
         </Tab>
     </TabBar>
 

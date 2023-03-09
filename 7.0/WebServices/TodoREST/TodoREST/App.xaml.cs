@@ -1,8 +1,11 @@
-﻿namespace TodoREST;
+﻿using TodoREST.Models;
+
+namespace TodoREST;
 
 public partial class App : Application
 {
-    public App()
+	public static UserInfo UserInfo;
+	public App()
 	{
 		InitializeComponent();
 
