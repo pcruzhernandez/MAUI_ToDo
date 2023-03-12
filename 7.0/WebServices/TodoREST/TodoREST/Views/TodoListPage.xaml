@@ -190,7 +190,7 @@
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
-                                            <Label Grid.Row="2" Grid.ColumnSpan="3" BackgroundColor="#282828" Padding="10,5,0,0" Text="{Binding PName}" FontSize="Medium" FontFamily="Montse" FontAttributes="Bold" TextColor="White" />
+                                            <Label Grid.Row="2" Grid.ColumnSpan="3" BackgroundColor="#282828" Padding="10,5,0,0" Text="{Binding PName}" FontSize="Medium" FontFamily="MontseSemibold" TextColor="White" />
                                             
                                             <Label Grid.Row="3" Grid.ColumnSpan="3" BackgroundColor="#282828" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Padding="10,0,0,0" Margin="0,5,0,0" FontSize="14" FontFamily="Montse" TextColor="CornflowerBlue">
                                                 <Label.FormattedText>

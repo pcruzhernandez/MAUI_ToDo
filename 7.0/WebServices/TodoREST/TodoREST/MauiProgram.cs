@@ -17,6 +17,8 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 fonts.AddFont("Montserrat-Regular.ttf", "Montse");
                 fonts.AddFont(filename: "materialdesignicons-webfont.ttf", alias: "MaterialDesignIcons");
+                fonts.AddFont("Montserrat-SemiBold.ttf", "MontseSemibold");
+                fonts.AddFont("Montserrat-Bold.ttf", "Montsebold");
             });
 
 		builder.Services.AddSingleton<IHttpsClientHandlerService, HttpsClientHandlerService>();

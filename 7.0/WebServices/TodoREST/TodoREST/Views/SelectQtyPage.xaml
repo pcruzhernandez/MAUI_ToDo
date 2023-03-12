@@ -140,10 +140,11 @@
 
                             <Label Grid.Row="0" Grid.Column="0" VerticalOptions="Center" HorizontalTextAlignment="Center" BackgroundColor="#282828" Padding="10,0,0,0" Text="Entrada" FontSize="18" FontFamily="Montse" TextColor="White"/>
                            
-                            <Label Grid.Column="1" Grid.Row="0" Text="{Binding PPrice}" FontSize="18" VerticalOptions="Center" 
+                            <Label Grid.Column="1" Grid.Row="0" Text="{Binding PPrice}"  FontSize="18" VerticalOptions="Center" 
                                    HorizontalOptions="Center" 
                                    TextColor="gray"
                                    FontFamily="Montse"/>
+                       
                             
                             <Label Grid.Row="1" Grid.Column="0" VerticalOptions="Center" HorizontalTextAlignment="Center" BackgroundColor="#282828" Padding="10,0,0,0" Text="Gastos Gestion" FontSize="18" FontFamily="Montse" TextColor="White"/>
 
@@ -161,11 +162,18 @@
 
                         </Grid>
                     </Border>
+                    <Label Grid.Column="1" Grid.Row="1" x:Name="Pid"
+                                   Text="{Binding PID}"
+                                   FontSize="22"
+                                   VerticalOptions="Center" 
+                                   HorizontalOptions="Center" 
+                                   TextColor="gray"
+                                   FontFamily="Montse"
+                                   IsVisible="false" />
 
 
 
 
-                    
                     <!--<Border Stroke="black" StrokeThickness="2" StrokeShape="RoundRectangle 10,10,10,10"  >
                             <Grid >
                                 <Grid.RowDefinitions>

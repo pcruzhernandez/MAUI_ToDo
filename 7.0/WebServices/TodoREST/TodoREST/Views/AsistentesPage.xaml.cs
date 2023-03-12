@@ -1,3 +1,4 @@
+using Microsoft.Maui.Controls;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using TodoREST.Models;
@@ -5,27 +6,54 @@ using TodoREST.Services;
 
 namespace TodoREST.Views
 { 
-    [QueryProperty(nameof(TodoTickets), "TodoTickets")]
+    [QueryProperty(nameof(Qty), "Qty")]
+    [QueryProperty(nameof(Ticket), "Ticket")]
+
+    
     public partial class AsistentesPage : ContentPage
     {
-        int count;
-        TodoTickets _todoTickets;
-        
-        public TodoTickets TodoTickets
+        public class Fruit
         {
-            get => _todoTickets;
+            public string Asistente { get; set; }
+            public string Nombre { get; set; }
+
+            public string Email { get; set; }
+            public string Email2 { get; set; }
+            public string Movil { get; set; }
+
+        }
+
+        ObservableCollection<Fruit> fruits = new ObservableCollection<Fruit>();
+        public ObservableCollection<Fruit> Fruits { get { return fruits; } }
+
+
+        public string Qty
+        {
+            get => _qty;
             set
             {
 
-                _todoTickets = value;
+                _qty = value;
                 OnPropertyChanged();
 
             }
         }
 
-        public class Fruit
+        
+        int count;
+        string _ticket;
+        string _qty;
+        
+        public string Ticket
         {
-            public string FruitName { get; set; }
+            get => _ticket;
+            set
+            {
+
+                _ticket = value;
+                OnPropertyChanged();
+
+            }
         }
 
 
@@ -35,19 +63,29 @@ namespace TodoREST.Views
 	    {
 		    InitializeComponent();
             count = 1;
-            
-            BindingContext = TodoTickets;
-            //fruits.Add(new Fruit() { FruitName = "Apple" });
-            //fruits.Add(new Fruit() { FruitName = "Orange" });
-            //fruits.Add(new Fruit() { FruitName = "Banana" });
-            //fruits.Add(new Fruit() { FruitName = "Grape" });
-            //fruits.Add(new Fruit() { FruitName = "Mango" });
-            //FruitListView.ItemsSource = fruits;
-            //collectionView.ItemsSource = TodoTickets;
+
+            //Pid.Text = _ticket;
+                   
+           
 
         }
 
-        
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            //Pid.Text = _ticket;
+            //collectionView.ItemsSource = _TodoTickets;
+            for (int i = 0; i <  Convert.ToInt32(_qty); i++)
+            {
+                int asistente = i + 1;
+                fruits.Add(new Fruit() { Asistente = "DATOS ASISTENTE " + asistente.ToString(),Nombre="",Email="",Email2="",Movil=""});
+            }
+            collectionView.ItemsSource = fruits;
+
+            //collectionView.ItemsSource = TodoTickets;
+        }
+
+
 
     }
 }

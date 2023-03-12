@@ -58,7 +58,7 @@ namespace TodoREST.Views
 
         void Asistentes_Taped(object sender, EventArgs e)
         {
-            Shell.Current.GoToAsync($"{nameof(AsistentesPage)}?Qty={PriceLabel.Text}");
+            Shell.Current.GoToAsync($"{nameof(AsistentesPage)}?Qty={CountLabel.Text}&Ticket={Pid.Text}");
         }
 
     }

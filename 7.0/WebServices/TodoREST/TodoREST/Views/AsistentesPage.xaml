@@ -3,31 +3,116 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TodoREST.Views.AsistentesPage"
              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             xmlns:helpers="clr-namespace:TodoREST.Helpers"
              Title="Last Day"
              BackgroundColor="Black">
-    <ContentPage.Resources>
-        <Style TargetType="Label">
-            <Setter Property="Margin"
-                    Value="0,10,0,10" />
-            <Setter Property="FontAttributes"
-                    Value="Bold" />
-            <Setter Property="FontSize"
-                    Value="20" />
-        </Style>
-        <Style TargetType="Button">
-            <Setter Property="Margin"
-                    Value="0,5,0,5" />
-        </Style>
-    </ContentPage.Resources>
-    
-    <VerticalStackLayout Margin="20">
-        <ListView x:Name="FruitListView" ItemsSource="{Binding Fruits}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <TextCell Text="{Binding FruitName}" />
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    </VerticalStackLayout>
-    
+    <CollectionView x:Name="collectionView" ItemsSource="{Binding Monkeys}">
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <Grid Padding="0" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="20" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="35" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    
+                    <Label Grid.ColumnSpan="2"
+                           Grid.Row="0"
+						   Padding="10,5,0,5"
+                           Text="{Binding Asistente}"
+						   FontAttributes="Bold" FontFamily="Montsebold" TextColor="DarkOrange" BackgroundColor="#361A03"/>
+
+                    <!--<Label Grid.Row="4" Grid.Column="1" BackgroundColor="Gray" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Padding="5,0,10,0" FontSize="14" FontFamily="Montse" TextColor="White">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{x:Static helpers:MaterialDesignIconFonts.TshirtCrew}" FontFamily="MaterialDesignIcons" FontSize="18"/>
+                                <Span Text="{Binding PVesti, StringFormat=' {0}'}" FontSize="14" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>-->
+                    <Label Grid.ColumnSpan="2"
+                           Grid.Row="1"
+						   Padding="10,0,0,0"
+                           Text="Nombre y Apellidos"
+						    FontFamily="Montse" TextColor="White" />
+                    <Frame  BackgroundColor="#2D2D2D"  Margin="10,0,0,0" Padding="0" HorizontalOptions="FillAndExpand" CornerRadius="0" BorderColor="#2D2D2D" Grid.Row="2" Grid.ColumnSpan="2">
+                        <StackLayout Orientation="Horizontal">
+                            <Frame BackgroundColor="white" HeightRequest="10" WidthRequest="30" CornerRadius="0" Padding="0" Margin="5">
+                                <Label Text="{x:Static helpers:MaterialDesignIconFonts.Account}" FontFamily="MaterialDesignIcons" FontSize="30" TextColor="White" BackgroundColor="#2D2D2D"/>
+                                <!--<Image Source="https://cdn4.iconfinder.com/data/icons/glyphs/24/icons_user2-256.png" Aspect="AspectFill" Margin="0"/>-->
+                            </Frame>
+                            <Entry Text="{Binding Nombre}" Placeholder="Nombre y Apellidos" FontFamily="Montse" TextColor="White" VerticalTextAlignment="Center"  />
+                        </StackLayout>
+                    </Frame>
+
+                    <Label Grid.ColumnSpan="2"
+                           Grid.Row="3"
+						   Padding="10,10,0,0"
+                           Text="Email"
+						    FontFamily="Montse" TextColor="White" />
+                    <Frame  BackgroundColor="#2D2D2D"  Margin="10,0,0,0" Padding="0" HorizontalOptions="FillAndExpand" CornerRadius="0" BorderColor="#2D2D2D" Grid.Row="4" Grid.ColumnSpan="2">
+                        <StackLayout Orientation="Horizontal">
+                            <Frame BackgroundColor="white" HeightRequest="10" WidthRequest="30" CornerRadius="0" Padding="0" Margin="5">
+                                <Label Text="{x:Static helpers:MaterialDesignIconFonts.Email}" FontFamily="MaterialDesignIcons" FontSize="30" TextColor="White" BackgroundColor="#2D2D2D"/>
+                                <!--<Image Source="https://cdn4.iconfinder.com/data/icons/glyphs/24/icons_user2-256.png" Aspect="AspectFill" Margin="0"/>-->
+                            </Frame>
+                            <Entry Text="{Binding Email}" Placeholder="Email" FontFamily="Montse" TextColor="White" VerticalTextAlignment="Center"  />
+                        </StackLayout>
+                    </Frame>
+
+                    <Label Grid.ColumnSpan="2"
+                           Grid.Row="5"
+						   Padding="10,10,0,0"
+                           Text="Repetir Email"
+						    FontFamily="Montse" TextColor="White" />
+                    <Frame  BackgroundColor="#2D2D2D"  Margin="10,0,0,0" Padding="0" HorizontalOptions="FillAndExpand" CornerRadius="0" BorderColor="#2D2D2D" Grid.Row="6" Grid.ColumnSpan="2">
+                        <StackLayout Orientation="Horizontal">
+                            <Frame BackgroundColor="white" HeightRequest="10" WidthRequest="30" CornerRadius="0" Padding="0" Margin="5">
+                                <Label Text="{x:Static helpers:MaterialDesignIconFonts.Email}" FontFamily="MaterialDesignIcons" FontSize="30" TextColor="White" BackgroundColor="#2D2D2D"/>
+                                <!--<Image Source="https://cdn4.iconfinder.com/data/icons/glyphs/24/icons_user2-256.png" Aspect="AspectFill" Margin="0"/>-->
+                            </Frame>
+                            <Entry Text="{Binding Email2}" Placeholder="Repetir Email" FontFamily="Montse" TextColor="White" VerticalTextAlignment="Center"  />
+                        </StackLayout>
+                    </Frame>
+
+                    <Label Grid.ColumnSpan="2"
+                           Grid.Row="7"
+						   Padding="10,10,0,0"
+                           Text="Movil"
+						    FontFamily="Montse" TextColor="White" />
+                    <Frame  BackgroundColor="#2D2D2D"  Margin="10,0,0,0" Padding="0" HorizontalOptions="FillAndExpand" CornerRadius="0" BorderColor="#2D2D2D" Grid.Row="8" Grid.ColumnSpan="2">
+                        <StackLayout Orientation="Horizontal">
+                            <Frame BackgroundColor="white" HeightRequest="10" WidthRequest="30" CornerRadius="0" Padding="0" Margin="5">
+                                <Label Text="{x:Static helpers:MaterialDesignIconFonts.Phone}" FontFamily="MaterialDesignIcons" FontSize="30" TextColor="White" BackgroundColor="#2D2D2D"/>
+                                <!--<Image Source="https://cdn4.iconfinder.com/data/icons/glyphs/24/icons_user2-256.png" Aspect="AspectFill" Margin="0"/>-->
+                            </Frame>
+                            <Entry Text="{Binding Movil}" Placeholder="Movil" FontFamily="Montse" TextColor="White" VerticalTextAlignment="Center"  />
+                        </StackLayout>
+                    </Frame>
+
+                    <!--<Entry Grid.Row="1"
+						   Grid.Column="1"
+						   Text="{Binding Nombre}"
+						   FontAttributes="Italic"
+						   VerticalOptions="End" TextColor="White" />-->
+                </Grid>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+        </CollectionView>
+
+
+
+
+
 </ContentPage>
